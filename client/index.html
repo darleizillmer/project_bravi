@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title>Dashboard Template · Bootstrap</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
+
+    <!-- Bootstrap core CSS -->
+<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="dashboard.css" rel="stylesheet">
+  </head>
+  <body>
+    
+<div class="container-fluid">
+  <div class="row">
+    <main role="main" class="col-md-4 col-lg-4">
+    <hr class="mb-4">
+    <div class="col-md-12 order-md-1">
+      <h4 class="mb-3">Adicionar Pessoa</h4>
+      <form class="needs-validation" novalidate>
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label for="firstName">Nome</label>
+            <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+          </div>
+        </div>
+
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-md btn-block" type="button" id="addPerson">Adicionar</button>
+      </form>
+    </div>
+    <hr class="mb-4">
+    
+      <h2>Pessoas</h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm" id="tabPerson">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nome</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </main>
+    <main role="main" class="col-md-8 col-lg-8 main_contact" style="display:none">
+    <hr class="mb-4">
+    <div class="col-md-12 order-md-1">
+      <h4 class="mb-3">Adicionar Contato</h4>
+      <form class="needs-validation" novalidate>
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label for="firstNameContact">Nome</label>
+            <input type="text" class="form-control" id="firstNameContact" placeholder="" value="" readonly>
+            <input type="hidden" class="form-control" id="idPerson" value="">
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="you@example.com">
+        </div>
+        <div class="mb-3">
+          <label for="phoneNumber">Telefone</label>
+          <input type="phoneNumber" class="form-control" id="phoneNumber">
+        </div>
+        <div class="mb-3">
+          <label for="whatsappNumber">Whatsapp</label>
+          <input type="whatsappNumber" class="form-control" id="whatsappNumber">
+        </div>
+
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-md btn-block" type="button" id="addContact">Adicionar</button>
+      </form>
+    </div>
+    <hr class="mb-4">
+    
+      <h2>Contatos</h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm" id="tabContact">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Email</th>
+              <th>Numero</th>
+              <th>Whatsapp</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" ></script>
+<script src="apiCall.js"></script></body>
+</html>
