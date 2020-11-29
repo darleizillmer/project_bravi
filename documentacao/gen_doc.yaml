@@ -1,0 +1,353 @@
+openapi: 3.0.0
+info:
+  title: API
+  version: '1.0'
+paths:
+  '/v1/contact/{id_person}':
+    get:
+      tags:
+        - Contact
+      summary: 'Busca contatos de um usuario da base'
+      description: 'Busca contatos de um usuario da base'
+      operationId: getContacts
+      parameters:
+        -
+          name: id_person
+          in: path
+          description: 'Parametros enviados para o endpoint'
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: 'Retorno com Sucesso'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Contact'
+        '404':
+          description: 'Nao encontrado'
+  '/v1/contact/unique/{id_contact}':
+    get:
+      tags:
+        - Contact
+      summary: 'Busca contato especifico da base'
+      description: 'Busca contato especifico da base'
+      operationId: getContact
+      parameters:
+        -
+          name: id_contact
+          in: path
+          description: 'Parametros enviados para o endpoint'
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: 'Retorno com Sucesso'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Contact'
+        '404':
+          description: 'Nao encontrado'
+  /v1/contact:
+    post:
+      tags:
+        - Contact
+      summary: 'Adiciona contato na base'
+      description: 'Adiciona contato na base'
+      operationId: addContact
+      parameters:
+        -
+          name: body
+          in: query
+          description: 'Parametros enviados para o endpoint'
+          required: true
+          style: form
+          schema:
+            properties:
+              id_person:
+                description: 'Id do usuario'
+                type: integer
+              phone_number:
+                description: 'Telefone do usuario'
+                type: string
+              whatsapp_number:
+                description: 'Whatsapp do usuario'
+                type: string
+              email:
+                description: 'Eamil do usuario'
+                type: string
+            type: object
+      responses:
+        '200':
+          description: 'Adicionado com Sucesso'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Contact'
+  '/v1/contact/{id_contact}':
+    put:
+      tags:
+        - Contact
+      summary: 'Atualiza contato na base'
+      description: 'Atualiza contato na base'
+      operationId: putContact
+      parameters:
+        -
+          name: id_contact
+          in: path
+          description: 'Parametros enviados para o endpoint'
+          required: true
+          schema:
+            type: integer
+            format: int64
+        -
+          name: body
+          in: query
+          description: 'Parametros enviados para o endpoint'
+          required: true
+          style: form
+          schema:
+            properties:
+              id_person:
+                description: 'Id do usuario'
+                type: integer
+              phone_number:
+                description: 'Telefone do usuario'
+                type: string
+              whatsapp_number:
+                description: 'Whatsapp do usuario'
+                type: string
+              email:
+                description: 'Eamil do usuario'
+                type: string
+            type: object
+      responses:
+        '200':
+          description: 'Atualizado com Sucesso'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Contact'
+        '404':
+          description: 'Contato nao encontrado'
+    delete:
+      tags:
+        - Contact
+      summary: 'Apaga dados de um contato na base'
+      description: 'Apaga dados de um contato na base'
+      operationId: removeContact
+      parameters:
+        -
+          name: id_contact
+          in: path
+          description: 'Parametros enviados para o endpoint'
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: 'Apagado com Sucesso'
+        '404':
+          description: 'Contato nao encontrado'
+  /v1/person:
+    get:
+      tags:
+        - Person
+      summary: 'Busca todas pessoas da base'
+      description: 'Busca todas pessoas da base'
+      operationId: getAll
+      responses:
+        '200':
+          description: 'Retorno com Sucesso'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/People'
+    post:
+      tags:
+        - Person
+      summary: 'Adiciona passoa na base'
+      description: 'Adiciona passoa na base'
+      operationId: addPerson
+      parameters:
+        -
+          name: body
+          in: query
+          description: 'Parametros enviados para o endpoint'
+          required: true
+          style: form
+          schema:
+            properties:
+              name:
+                description: 'Nome do usuario'
+                type: string
+            type: object
+      responses:
+        '201':
+          description: 'Criado com Sucesso'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/People'
+  '/v1/person/{id_person}':
+    get:
+      tags:
+        - Person
+      summary: 'Busca dados da pessoa'
+      description: 'Busca dados da pessoa'
+      operationId: getPerson
+      parameters:
+        -
+          name: id_person
+          in: path
+          description: 'Parametros enviados para o endpoint'
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: 'Retorno com Sucesso'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/People'
+        '404':
+          description: 'Nao encontrado'
+    put:
+      tags:
+        - Person
+      summary: 'Atualiza dados de uma passoa na base'
+      description: 'Atualiza dados de uma passoa na base'
+      operationId: putPerson
+      parameters:
+        -
+          name: id_person
+          in: path
+          description: 'Parametros enviados para o endpoint'
+          required: true
+          schema:
+            type: integer
+            format: int64
+        -
+          name: body
+          in: query
+          description: 'Parametros enviados para o endpoint'
+          required: true
+          style: form
+          schema:
+            properties:
+              name:
+                description: 'Nome do usuario'
+                type: string
+            type: object
+      responses:
+        '200':
+          description: 'Atualizado com Sucesso'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/People'
+        '404':
+          description: 'Usuario nao encontrado'
+    delete:
+      tags:
+        - Person
+      summary: 'Apaga dados de uma passoa na base'
+      description: 'Apaga dados de uma passoa na base'
+      operationId: removePerson
+      parameters:
+        -
+          name: id_person
+          in: path
+          description: 'Parametros enviados para o endpoint'
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: 'Apagado com Sucesso'
+        '404':
+          description: 'Usuario nao encontrado'
+components:
+  schemas:
+    Contact:
+      title: 'Contact model'
+      description: 'Contact model'
+      properties:
+        id_contact:
+          title: 'Id Contact'
+          description: 'Id Contact'
+          type: integer
+          format: int64
+        id_person:
+          title: 'Id Person'
+          description: 'Id Person'
+          type: integer
+          format: int64
+        phone_number:
+          title: 'Phone Number'
+          description: 'Phone Number'
+          type: string
+        whatsapp_number:
+          title: 'Whatsapp Number'
+          description: 'Whatsapp Number'
+          type: string
+        email:
+          title: Email
+          description: Email
+          type: string
+        created_at:
+          title: 'Created At'
+          description: 'Created At'
+          type: string
+        updated_at:
+          title: 'Updated At'
+          description: 'Updated At'
+          type: string
+      type: object
+    People:
+      title: 'People model'
+      description: 'People model'
+      properties:
+        id_person:
+          title: 'Id Person'
+          description: 'Id Person'
+          type: integer
+          format: int64
+        name:
+          title: Name
+          description: Name
+          type: string
+        created_at:
+          title: 'Created At'
+          description: 'Created At'
+          type: string
+        updated_at:
+          title: 'Updated At'
+          description: 'Updated At'
+          type: string
+      type: object
